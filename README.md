@@ -1,14 +1,6 @@
 # browser-mcp
 
-An MCP server (streamable HTTP) that lets AI tools like Claude Code or Codex control a headless Firefox tab in a limited way, meant for testing web apps.
-
-- One session is one browser context with a single tab. New tabs and popups are closed and reported.
-- A session is restricted to a list of domains, each domain also allows its subdomains. If the tab navigates to anything else, the session is closed.
-- Optionally the server restricts which domains sessions may use at all (`ALLOWED_DOMAINS`). The allowed domains are logged on startup.
-- Sessions close after 5 minutes without a tool call. `keep_alive` resets the timer.
-- Tool calls within one session run one at a time.
-- Clicks, typing, key presses and wheel scrolling go through Playwright's input pipeline, so the page sees `isTrusted: true` events.
-- Dialogs (alert/confirm/prompt) are accepted automatically. They are reported as events, along with page errors, `console.error` output and closed popups.
+An MCP server (streamable HTTP) that lets AI tools like Claude Code or Codex control a headless Firefox tab in a limited way, meant for testing web apps in a (more) controlled environment.
 
 ## Tools
 
