@@ -6,7 +6,7 @@ RUN go mod download
 RUN PWGO_VER=$(go list -m -f '{{.Version}}' github.com/mxschmitt/playwright-go) \
     && CGO_ENABLED=0 go install github.com/mxschmitt/playwright-go/cmd/playwright@${PWGO_VER}
 COPY . .
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/browser-mcp .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/firefox-ui-testing-mcp .
 
 FROM ubuntu:noble
 ENV PLAYWRIGHT_DRIVER_PATH=/opt/playwright/driver \
@@ -18,8 +18,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* \
     && useradd --create-home --uid 10001 browser \
     && chmod -R a+rX /opt/playwright
-COPY --from=builder /out/browser-mcp /usr/local/bin/browser-mcp
+COPY --from=builder /out/firefox-ui-testing-mcp /usr/local/bin/firefox-ui-testing-mcp
 USER browser
 ENV PORT=8080
 EXPOSE 8080
-CMD ["browser-mcp"]
+CMD ["firefox-ui-testing-mcp"]

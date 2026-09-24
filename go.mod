@@ -1,4 +1,4 @@
-module github.com/Back-to-code/browser-mcp
+module github.com/mjarkk/firefox-ui-testing-mcp
 
 go 1.27.0
 

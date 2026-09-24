@@ -8,9 +8,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/Back-to-code/browser-mcp/src"
 	mcp "github.com/Back-to-code/go-mcp"
 	"github.com/gofiber/fiber/v3"
+	"github.com/mjarkk/firefox-ui-testing-mcp/src"
 )
 
 func main() {
@@ -29,10 +29,10 @@ func main() {
 		src.Fatalf("%v", err)
 	}
 
-	server := mcp.NewServer("browser-mcp")
+	server := mcp.NewServer("firefox-ui-testing-mcp")
 	src.RegisterTools(server, manager)
 
-	app := fiber.New(fiber.Config{AppName: "browser-mcp"})
+	app := fiber.New(fiber.Config{AppName: "firefox-ui-testing-mcp"})
 
 	app.All("/mcp", func(c fiber.Ctx) error {
 		logInitialize(c.Body(), c.IP())
@@ -54,7 +54,7 @@ func main() {
 	})
 
 	app.Get("/", func(c fiber.Ctx) error {
-		return c.SendString("browser-mcp is running, the mcp endpoint is /mcp")
+		return c.SendString("firefox-ui-testing-mcp is running, the mcp endpoint is /mcp")
 	})
 
 	go func() {

@@ -1,4 +1,4 @@
-# browser-mcp
+# firefox-ui-testing-mcp
 
 An MCP server (streamable HTTP) that lets AI tools like Claude Code or Codex control a headless Firefox tab in a limited way, meant for testing web apps in a (more) controlled environment.
 
@@ -9,8 +9,8 @@ All tools, their arguments (as TypeScript types), the result format and the aria
 ## Running
 
 ```sh
-docker build -t browser-mcp .
-docker run --rm -p 8080:8080 --shm-size=1g browser-mcp
+docker build -t firefox-ui-testing-mcp .
+docker run --rm -p 8080:8080 --shm-size=1g firefox-ui-testing-mcp
 claude mcp add --transport http browser http://localhost:8080/mcp
 ```
 
@@ -27,7 +27,7 @@ go run github.com/mxschmitt/playwright-go/cmd/playwright install --with-deps fir
 
 ## Configuration
 
-Every option can be set with a flag or an env variable. A flag wins over the env variable, and the env variable wins over the default. Run `browser-mcp --help` for the flag list.
+Every option can be set with a flag or an env variable. A flag wins over the env variable, and the env variable wins over the default. Run `firefox-ui-testing-mcp --help` for the flag list.
 
 | flag | env | default | notes |
 | --- | --- | --- | --- |
